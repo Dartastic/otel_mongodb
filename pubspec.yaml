@@ -1,7 +1,7 @@
 name: otel_mongodb
 description: >-
   OpenTelemetry instrumentation for package:mongo_dart. Wraps MongoDB operations in CLIENT-kind spans following OTel stable semantic conventions (db.system.name=mongodb, db.operation.name, db.collection.name, db.namespace).
-version: 0.1.0-beta.1
+version: 0.1.0-beta.2-wip
 repository: https://github.com/dartastic/otel_mongodb
 homepage: https://dartastic.io
 
