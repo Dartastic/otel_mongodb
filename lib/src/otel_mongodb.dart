@@ -19,15 +19,12 @@ Attributes _attrs({
   int? serverPort,
 }) =>
     OTel.attributesFromMap(<String, Object>{
-      Database.dbSystem.key: _dbSystem,
-      Database.dbSystemName.key: _dbSystem,
-      Database.dbOperation.key: operation,
-      Database.dbOperationName.key: operation,
-      if (collection != null) Database.dbCollectionName.key: collection,
-      if (namespace != null) Database.dbNamespace.key: namespace,
-      if (serverAddress != null)
-        ServerResource.serverAddress.key: serverAddress,
-      if (serverPort != null) ServerResource.serverPort.key: serverPort,
+      Db.dbSystemName.key: _dbSystem,
+      Db.dbOperationName.key: operation,
+      if (collection != null) Db.dbCollectionName.key: collection,
+      if (namespace != null) Db.dbNamespace.key: namespace,
+      if (serverAddress != null) Server.serverAddress.key: serverAddress,
+      if (serverPort != null) Server.serverPort.key: serverPort,
     });
 
 /// Runs [invoke] inside a CLIENT-kind span named `<operation> <collection>`
@@ -73,7 +70,7 @@ Future<R> tracedMongodbCall<R>({
     span.addAttributes(
       OTel.attributes([
         OTel.attributeString(
-          ErrorResource.errorType.key,
+          ErrorAttributes.errorType.key,
           e.runtimeType.toString(),
         ),
       ]),
